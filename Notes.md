@@ -45,3 +45,29 @@ And scan the QR code with the Expo Go app in the device
 Device does not need to be connected via USB
 
 
+### How to clear ios Simulator's cache
+
+
+```language
+% xcrun simctl erase all
+```
+
+
+### How to clear physical device's cache
+
+Double click on the home button and swipe up to clear the cache
+
+Open Expo Go app in the device and clear "Recently opened" section
+
+Rescan the QR to load the new version
+
+### How to clear Andorid physical device's cache
+
+Open Expo Go app in the device and clear "Recently opened" section
+
+### How to clear Andorid emulator's cache
+
+
+Open Expo Go app in the device and clear "Recently opened" section
+
+

@@ -1,34 +1,39 @@
 import React from 'react';
-import { View, Text, Button, ScrollView, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { View, Text, Button, ScrollView, FlatList, StyleSheet, TouchableOpacity, Image } from 'react-native';
+
+// Define image paths
+const imagePaths = {
+  fullBody: require('./assets/images/full_body_workout.jpg'),
+  cardioBlast: require('./assets/images/cardio_blast.jpg'),
+  yogaFlex: require('./assets/images/yoga_flexibility.jpg'),
+  zumba: require('./assets/images/zumba_class.jpg'),
+  circuit: require('./assets/images/circuit_training.jpg'),
+  pilates: require('./assets/images/pilate_training.jpg'),
+  strength: require('./assets/images/strength_training.jpg'),
+  cardio: require('./assets/images/cardio.jpg'),
+  yoga: require('./assets/images/yoga.jpg'),
+};
 
 const PopularworkoutPlans = [
-  { id: '1', title: 'Full Body Workout', description: '45 minutes of full body exercise', duration: '45 min', imageUrl: 'https://images.unsplash.com/photo-1711623350002-d97138f35bf2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: '2', title: 'Cardio Blast', description: '30 minutes of intense cardio training', duration: '30 min', imageUrl: 'https://images.unsplash.com/photo-1723908902669-0878e08aa41c?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: '3', title: 'Yoga for Flexibility', description: '1 hour yoga session for flexibility', duration: '60 min', imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { id: '1', title: 'Full Body Workout', description: '45 minutes of full body exercise', duration: '45 min', image: imagePaths.fullBody },
+  { id: '2', title: 'Cardio Blast', description: '30 minutes of intense cardio training', duration: '30 min', image: imagePaths.cardioBlast },
+  { id: '3', title: 'Yoga for Flexibility', description: '1 hour yoga session for flexibility', duration: '60 min', image: imagePaths.yogaFlex },
 ];
 
 const IntenseWorkoutPlans = [
-  { id: '1', title: 'Zumba Class', description: '30 minutes of zumba classes', duration: '30 min', imageUrl: 'https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: '2', title: 'Circuit Training', description: '20 minutes of circuit training', duration: '20 min', imageUrl: 'https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2lyY3VpdCUyMHRyYWluaW5nfGVufDB8fDB8fHwy' },
-  { id: '3', title: 'Pilate Training', description: '60 minutes of pilate training', duration: '20 min', imageUrl: 'https://images.unsplash.com/photo-1620134280013-e756c46affc6?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-
+  { id: '1', title: 'Zumba Class', description: '30 minutes of zumba classes', duration: '30 min', image: imagePaths.zumba },
+  { id: '2', title: 'Circuit Training', description: '20 minutes of circuit training', duration: '20 min', image: imagePaths.circuit },
+  { id: '3', title: 'Pilate Training', description: '60 minutes of pilate training', duration: '20 min', image: imagePaths.pilates },
 ];
 
 export default function FitnessWorld() {
 
   const renderWorkout = ({ item }) => (
     <View style={styles.workoutCard}>
-      <FastImage
-        source={{
-          uri: item.imageUrl,
-          priority: FastImage.priority.normal,
-          cache: FastImage.cacheControl.immutable
-        }}
+      <Image
+        source={item.image}
         style={styles.workoutImage}
-        resizeMode={FastImage.resizeMode.cover}
-        fallback={true}
-        defaultSource={require('./assets/icon.png')}
+        resizeMode="cover"
       />
       <Text style={styles.workoutTitle}>{item.title}</Text>
       <Text style={styles.workoutDescp}>{item.description}</Text>
@@ -60,44 +65,26 @@ export default function FitnessWorld() {
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.trainingTypeCard}>
-          <FastImage
-            source={{
-              uri: 'https://images.unsplash.com/photo-1589579234096-25cb6b83e021?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-              priority: FastImage.priority.normal,
-              cache: FastImage.cacheControl.immutable
-            }}
+          <Image
+            source={imagePaths.strength}
             style={styles.trainingImage}
-            resizeMode={FastImage.resizeMode.cover}
-            fallback={true}
-            defaultSource={require('./assets/icon.png')}
+            resizeMode="cover"
           />
           <Text style={styles.trainingTitle}>Strength Training</Text>
         </View>
         <View style={styles.trainingTypeCard}>
-          <FastImage
-            source={{
-              uri: 'https://images.unsplash.com/photo-1689876593463-6678f2e8d4f2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-              priority: FastImage.priority.normal,
-              cache: FastImage.cacheControl.immutable
-            }}
+          <Image
+            source={imagePaths.cardio}
             style={styles.trainingImage}
-            resizeMode={FastImage.resizeMode.cover}
-            fallback={true}
-            defaultSource={require('./assets/icon.png')}
+            resizeMode="cover"
           />
           <Text style={styles.trainingTitle}>Cardio</Text>
         </View>
         <View style={styles.trainingTypeCard}>
-          <FastImage
-            source={{
-              uri: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-              priority: FastImage.priority.normal,
-              cache: FastImage.cacheControl.immutable
-            }}
+          <Image
+            source={imagePaths.yoga}
             style={styles.trainingImage}
-            resizeMode={FastImage.resizeMode.cover}
-            fallback={true}
-            defaultSource={require('./assets/icon.png')}
+            resizeMode="cover"
           />
           <Text style={styles.trainingTitle}>Yoga</Text>
         </View>
